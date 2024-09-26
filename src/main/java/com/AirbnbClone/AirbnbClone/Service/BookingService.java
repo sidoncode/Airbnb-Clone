@@ -50,8 +50,11 @@ public class BookingService {
     }
 
 
+
+
+
     // get booking by PropertyID.
-    public List<Booking> getBookingByProperty(Long propertyId){
+    public List<Booking> getBookingsByProperty(Long propertyId){
         return bookingRepository.findByPropertyId(propertyId);
     }
 
@@ -60,4 +63,10 @@ public class BookingService {
          bookingRepository.deleteById(id);
     }
 
+
+    // get booking by id
+    public Booking getBookingById(Long id) {
+        return bookingRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Booking not found"));
+    }
 }
